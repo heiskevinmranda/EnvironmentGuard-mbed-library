@@ -1,3 +1,15 @@
+#include "mbed.h"
+#include "EnvironmentGuard.h"
+
+EnvironmentGuard::EnvironmentGuard(PinName sda, PinName scl, int frequency) {
+    i2c = new I2C(sda, scl);
+    i2c->frequency(frequency);
+}
+
+EnvironmentGuard::~EnvironmentGuard() {
+    delete i2c;
+}
+
 float EnvironmentGuard::readTemperatureLM75B() {
     char cmd[1] = {0x00};           // Temperature register
     char data[2];
@@ -28,10 +40,4 @@ bool EnvironmentGuard::isTemperatureAbove(float threshold) {
     }
     
     return (temp > threshold);
-}
-
-EnvironmentGuard envGuard(D14, D15);  // SDA, SCL on most FRDM-K64F boards
-
-if (envGuard.isTemperatureAbove(30.0f)) {
-    printf("ALERT: Temperature exceeded 30°C!\n");
 }
