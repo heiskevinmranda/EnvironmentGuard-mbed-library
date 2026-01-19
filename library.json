@@ -1,0 +1,11 @@
+{
+  "name": "EnvironmentGuard",
+  "version": "1.0.0",
+  "description": "Simple library for LM75B temperature sensor with threshold detection",
+  "keywords": ["LM75B", "temperature", "I2C", "mbed"],
+  "author": "Kevin Mranda",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heiskevinmranda/EnvironmentGuard-mbed-library.git"
+  }
+}
